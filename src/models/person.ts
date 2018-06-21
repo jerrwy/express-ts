@@ -1,4 +1,4 @@
-import {Table, Column, Model, HasMany} from 'sequelize-typescript';
+import {Table, Column, Model, CreatedAt, UpdatedAt} from 'sequelize-typescript';
 
 @Table
 export class Person extends Model<Person> {
@@ -7,4 +7,12 @@ export class Person extends Model<Person> {
  
   @Column
   birthday: Date;
+
+  @CreatedAt
+  @Column
+  createdAt: Date;
+
+  @UpdatedAt
+  @Column
+  updatedAt: Date;
 }
