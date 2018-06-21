@@ -1,4 +1,5 @@
 import * as express from 'express';
+import {sequelize} from './utils/sequelize';
 
 import {WelcomeController} from './controllers';
 
@@ -7,6 +8,7 @@ const port: any = process.env.PORT || 3000;
 
 app.use('/welcome', WelcomeController);
 
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}/`);
+app.listen(port, async () => {
+  await sequelize.sync({force: true});
+  console.log(`Listening at http://localhost:${port}/`);
 });
